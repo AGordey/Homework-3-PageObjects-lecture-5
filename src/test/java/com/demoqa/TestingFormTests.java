@@ -15,7 +15,7 @@ public class TestingFormTests {
 
     @BeforeAll
     static void setUp() {
-//   Configuration.holdBrowserOpen = true;
+        //  Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
@@ -25,7 +25,8 @@ public class TestingFormTests {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
-        //Все простые поля для заполнения
+
+        //Простые поля для заполнения
         $("#firstName").setValue("OurFirstName");
         $("#lastName").setValue("OurLastName");
         $("#userEmail").setValue("OurEmail@email.com");
@@ -33,16 +34,19 @@ public class TestingFormTests {
         $("#currentAddress").setValue("OurCurrentAddress");
 
         //Поле с радиобаттоном - выбор пола
-        $x("//*[@id='genterWrapper']/div[2]/div[2]").click();
+        $("#genterWrapper").$(byText("Male")).click();
+
+        //Дата рождения
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").selectOption("2000");
+        $(".react-datepicker__month-select").selectOption("January");
+        $(".react-datepicker__day.react-datepicker__day--019").click();
 
         //Поле предметов - выпадающее меню
         $("#subjectsInput").setValue("Hindi").pressEnter();
-        $("#subjectsInput").setValue("English").pressEnter();
 
         //Выбор хобби
-        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#hobbiesWrapper").$(byText("Music")).click();
 
         //Выбор города
         $("#stateCity-wrapper").click();
@@ -53,32 +57,22 @@ public class TestingFormTests {
         //Зaгрузка файла
         $("#uploadPicture").uploadFromClasspath("1.png");
 
-        //Дата рождения
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").$(byText("2000")).click();
-        $(".react-datepicker__month-select").$(byText("January")).click();
-        $("[aria-label$='" + "January" + " " + 9 + "th, " + 2000 + "']").click();
-
         //Кнопка Submit
         $("#submit").click();
 
         //Проверка введенных данных
-                $(".modal-body").shouldHave
+        $(".modal-body").shouldHave
                 (text("OurFirstName"),
-                text("OurLastName"),
-                text("OurEmail@email.com"),
-                text("1234567890"),
-                text("Female"),
-                text("Hindi"),
-                text("English"),
-                text("Sports"),
-                text("Reading"),
-                text("Music"),
-                text("Haryana"),
-                text("Karnal"),
-                text("1.png"),
-                text("09 January,2000"),
-                text("OurCurrentAddress"));
+                        text("OurLastName"),
+                        text("OurEmail@email.com"),
+                        text("1234567890"),
+                        text("Male"),
+                        text("Hindi"),
+                        text("Reading"), text("Haryana"),
+                        text("Karnal"),
+                        text("1.png"),
+                        text("19 January,2000"),
+                        text("OurCurrentAddress"));
 
     }
 }
