@@ -86,10 +86,9 @@ public class TestingFormTests {
                         text(gender),
                         text(subjects),
                         text(hobbie),
-                        text(stateCity),
-                        text(city),
+                        text(stateCity + " " + city),
                         text("1.png"),
-                        text(dayBD+" " + mounthBD + "," + yearBD),
+                        text(dayBD + " " + mounthBD + "," + yearBD),
                         text(currentAddress));
 
     }
