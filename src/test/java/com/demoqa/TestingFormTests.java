@@ -26,6 +26,7 @@ public class TestingFormTests {
             gender = "Male",
             subjects = "Hindi",
             hobbie = "Reading",
+            picture = "1.png",
             stateCity = "Haryana",
             city = "Karnal";
 
@@ -72,7 +73,7 @@ public class TestingFormTests {
         $(byText(city)).click();
 
         //Зaгрузка файла
-        $("#uploadPicture").uploadFromClasspath("1.png");
+        $("#uploadPicture").uploadFromClasspath(picture);
 
         //Кнопка Submit
         $("#submit").click();
@@ -87,7 +88,7 @@ public class TestingFormTests {
                         text(subjects),
                         text(hobbie),
                         text(stateCity + " " + city),
-                        text("1.png"),
+                        text(picture),
                         text(dayBD + " " + mounthBD + "," + yearBD),
                         text(currentAddress));
 
