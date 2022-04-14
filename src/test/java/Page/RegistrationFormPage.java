@@ -1,5 +1,8 @@
 package Page;
 
+import Page.Components.CalendarComponent;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -69,6 +72,15 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setSubmit() {
         $("#submit").click();
+        return this;
+    }
+    public RegistrationFormPage setCalendarDate (String day, String month, String year)  {
+        $("#dateOfBirthInput").click();
+        new Page.Components.CalendarComponent().setDate(day,month,year);
+        return this;
+    }
+    public RegistrationFormPage checkResult (String value)  {
+        $(".modal-body").shouldHave(text(value));
         return this;
     }
 }

@@ -49,29 +49,22 @@ public class TestFormWithPageObjects {
                 .setSubjects(subjects)
                 .setHobbie(hobbie)
                 .setStateAndSity(stateCity, city)
-                .setUploadPicture(picture);
+                .setUploadPicture(picture)
+                .setCalendarDate(dayBD, mounthBD, yearBD)
+                .setSubmit();
 
-                //Дата рождения
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOption(yearBD);
-        $(".react-datepicker__month-select").selectOption(mounthBD);
-        $(".react-datepicker__day.react-datepicker__day--019").click();
 
-        registrationFormPage.setSubmit();
-
-        //Проверка введенных данных
-        $(".modal-body").shouldHave
-                (text(firstName),
-                        text(lastName),
-                        text(email),
-                        text(number),
-                        text(gender),
-                        text(subjects),
-                        text(hobbie),
-                        text(stateCity + " " + city),
-                        text(picture),
-                        text(dayBD + " " + mounthBD + "," + yearBD),
-                        text(currentAddress));
+        registrationFormPage.checkResult(firstName)
+                .checkResult(lastName)
+                .checkResult(email)
+                .checkResult(number)
+                        .checkResult(gender)
+                        .checkResult(subjects)
+                        .checkResult(hobbie)
+                       .checkResult(stateCity + " " + city)
+                       .checkResult(picture)
+                       .checkResult(dayBD + " " + mounthBD + "," + yearBD)
+                       .checkResult(currentAddress);
 
     }
 }
