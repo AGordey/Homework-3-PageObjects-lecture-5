@@ -58,14 +58,13 @@ public class TestFormWithPageObjects {
                 .checkResult(lastName)
                 .checkResult(email)
                 .checkResult(number)
-                        .checkResult(gender)
-                        .checkResult(subjects)
-                        .checkResult(hobbie)
-                       .checkResult(stateCity + " " + city)
-                       .checkResult(picture)
-                       .checkResult(dayBD + " " + mounthBD + "," + yearBD)
-                       .checkResult(currentAddress);
-
+                .checkResult(gender)
+                .checkResult(subjects)
+                .checkResult(hobbie)
+                .checkResult(stateCity + " " + city)
+                .checkResult(picture)
+                .checkResult(dayBD + " " + mounthBD + "," + yearBD)
+                .checkResult(currentAddress);
     }
 }
 
