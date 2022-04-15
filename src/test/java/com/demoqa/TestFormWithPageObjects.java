@@ -6,11 +6,6 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
-
 public class TestFormWithPageObjects {
     Faker faker = new Faker();
 
@@ -41,7 +36,7 @@ public class TestFormWithPageObjects {
     void fillFormTest () {
         registrationFormPage.openPage()
                 .setFirstName(firstName)
-                .setFirstName(lastName)
+                .setLastName(lastName)
                 .setEmail(email)
                 .setUserNumber(number)
                 .setCurrentAddress(currentAddress)
